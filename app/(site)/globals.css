@@ -1,0 +1,264 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Configure Tailwind's container utility */
+@utility container {
+	width: 100%;
+	margin-inline: auto;
+	padding-inline: 1rem;
+
+	@media (width >=640px) {
+		max-width: 640px;
+		padding-inline: 1.5rem;
+	}
+
+	@media (width >=768px) {
+		max-width: 768px;
+	}
+
+	@media (width >=1024px) {
+		max-width: 1024px;
+		padding-inline: 2rem;
+	}
+
+	@media (width >=1280px) {
+		max-width: 1280px;
+	}
+
+	@media (width >=1536px) {
+		max-width: 1536px;
+	}
+
+	@media (width >=1920px) {
+		max-width: 1920px;
+	}
+}
+
+:root {
+	--background: #ffffff;
+	--foreground: #171717;
+
+	/* Dealer theme variables (dynamically injected via layout.tsx) */
+	--dealer-primary: #0066cc;
+	--dealer-secondary: #333333;
+	--dealer-accent: #ffffff;
+	--dealer-primary-hover: #0052a3;
+	--dealer-primary-active: #003d7a;
+
+
+
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-dealer-primary: var(--dealer-primary);
+	--color-dealer-secondary: var(--dealer-secondary);
+	--color-dealer-accent: var(--dealer-accent);
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
+
+
+
+
+	/* new colors */
+	--color-text-color: #001333;
+	--color-black: #000000;
+	--color-white: #ffffff;
+	--color-c-light-gray: #F8F8F8;
+	--color-c-blue: #005DFF;
+	--color-c-gray-black: #C0C0C0;
+
+	/* new colors */
+}
+
+.scrollbar-hide {
+    scrollbar-width: none;        /* Firefox */
+    -ms-overflow-style: none;     /* IE & Edge */
+  }
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;                /* Chrome, Safari */
+}
+
+body {
+	background: var(--background);
+	color: var(--foreground);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Critical CSS for above-the-fold content - prevent layout shifts */
+img {
+	content-visibility: auto;
+}
+
+/* Ensure consistent aspect ratio for vehicle images */
+.aspect-3\/2 {
+	aspect-ratio: 3 / 2;
+}
+
+/* Screen reader only utility */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+/* Swiper navigation styling for NewVehicleCard chips carousel */
+.vehicle-card-swiper-wrapper {
+	--swiper-navigation-size: 18px;
+
+}
+
+.vehicle-card-swiper-wrapper .swiper-button-disabled {
+	opacity: 0.5;
+}
+
+.vehicle-card-swiper {
+	max-width: 350px !important;
+}
+
+/* CTA Button hover effects using CSS custom properties */
+.cta-form-btn:hover,
+.cta-link-btn:hover {
+	color: var(--hover-color) !important;
+	background-color: var(--hover-bg) !important;
+}
+
+/* Hide scrollbar for horizontal slider */
+.scrollbar-hide {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+	display: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	@apply appearance-none;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+/* WYSIWYG Content Styling - Reusable class for all rich text blocks */
+.wysiwyg-content {
+	@apply prose max-w-none text-gray-900 prose-headings:text-gray-900 prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-4xl prose-h1:font-bold prose-h1:mb-4 prose-h1:mt-8 prose-h2:text-3xl prose-h2:font-bold prose-h2:mb-3 prose-h2:mt-6 prose-h3:text-2xl prose-h3:font-semibold prose-h3:mb-3 prose-h3:mt-5 prose-h4:text-xl prose-h4:font-semibold prose-h4:mb-2 prose-h4:mt-4 prose-h5:text-lg prose-h5:font-medium prose-h5:mb-2 prose-h5:mt-4 prose-h6:text-base prose-h6:font-medium prose-h6:mb-2 prose-h6:mt-3 prose-p:text-gray-900 prose-p:leading-relaxed prose-p:mb-4 prose-a:text-blue-600 prose-a:underline hover:prose-a:text-blue-800 prose-strong:font-semibold prose-em:italic prose-ul:list-disc prose-ul:pl-6 prose-ul:my-4 prose-ol:list-decimal prose-ol:pl-6 prose-ol:my-4 prose-li:my-1 prose-li:text-gray-900 prose-blockquote:text-gray-700 prose-blockquote:border-l-4 prose-blockquote:border-gray-300 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:my-4 prose-code:bg-gray-100 prose-code:text-gray-900 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:rounded-lg prose-pre:p-4 prose-pre:my-4 prose-pre:overflow-x-auto prose-img:rounded-lg prose-img:shadow-md prose-img:my-6 prose-img:mx-auto prose-hr:border-gray-300 prose-hr:my-8;
+}
+
+/* Allow strong and em elements to inherit custom colors from parent spans */
+.wysiwyg-content [data-color] strong,
+.wysiwyg-content [data-color] em {
+	color: inherit;
+}
+
+/* Ensure paragraphs have spacing even if prose styles are overridden */
+.wysiwyg-content p {
+	margin-bottom: 1rem;
+}
+
+.wysiwyg-content p:last-child {
+	margin-bottom: 0;
+}
+
+/* Make empty paragraphs visible (for line breaks created by Enter key) */
+.wysiwyg-content p:empty {
+	min-height: 1.5em;
+}
+
+.wysiwyg-content p:empty::before {
+	content: "\200B";
+	/* Zero-width space to prevent collapsing */
+}
+
+/* Remove spacing from trailing empty paragraph (TipTap adds this for cursor positioning) */
+.wysiwyg-content p:empty:last-child {
+	display: none;
+}
+
+@keyframes dt-fade-in-scale {
+	from {
+		opacity: 0;
+		transform: translateY(160px) scale(0.96);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes dt-fade-out-scale {
+	from {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+
+	to {
+		opacity: 0;
+		transform: translateY(160px) scale(0.96);
+	}
+}
+
+@keyframes dt-slide-in-right {
+	from {
+		opacity: 0;
+		transform: translateX(240px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes dt-slide-out-right {
+	from {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	to {
+		opacity: 0;
+		transform: translateX(240px);
+	}
+}
+
+/* Center modal */
+.dt-modal-center[data-state="open"],
+.dt-modal-center [data-state="open"] {
+	animation: dt-fade-in-scale 200ms ease-out;
+}
+
+.dt-modal-center[data-state="closed"],
+.dt-modal-center [data-state="closed"] {
+	animation: dt-fade-out-scale 150ms ease-in;
+}
+
+/* Side modal */
+.dt-modal-side[data-state="open"],
+.dt-modal-side [data-state="open"] {
+	animation: dt-slide-in-right 250ms ease-out;
+}
+
+.dt-modal-side[data-state="closed"],
+.dt-modal-side [data-state="closed"] {
+	animation: dt-slide-out-right 200ms ease-in;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+	.dt-modal-center,
+	.dt-modal-side {
+		animation: none !important;
+	}
+}

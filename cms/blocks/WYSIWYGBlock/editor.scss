@@ -1,0 +1,194 @@
+/* WYSIWYG Editor Styles for Payload CMS Admin */
+
+.wysiwyg-editor-field {
+  .ProseMirror {
+    min-height: 200px;
+    padding: 1rem;
+    
+    &:focus {
+      outline: none;
+    }
+
+    /* Placeholder styling */
+    p.is-editor-empty:first-child::before {
+      color: #9ca3af;
+      content: attr(data-placeholder);
+      float: left;
+      height: 0;
+      pointer-events: none;
+    }
+
+    /* Headings */
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+    }
+
+    h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+      margin-top: 1.75rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+      margin-top: 1.25rem;
+    }
+
+    h5 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    h6 {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    /* Paragraphs */
+    p {
+      margin-bottom: 1rem;
+      line-height: 1.75;
+    }
+
+    /* Lists */
+    ul {
+      list-style-type: disc;
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+
+      li {
+        margin-bottom: 0.25rem;
+      }
+    }
+
+    ol {
+      list-style-type: decimal;
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+
+      li {
+        margin-bottom: 0.25rem;
+      }
+    }
+
+    /* Blockquote */
+    blockquote {
+      border-left: 4px solid #e5e7eb;
+      margin: 1.5rem 0;
+      padding-left: 1rem;
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    /* Code */
+    code {
+      background-color: #f3f4f6;
+      border-radius: 0.25rem;
+      font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 0.875rem;
+      padding: 0.125rem 0.25rem;
+    }
+
+    pre {
+      background-color: #1f2937;
+      border-radius: 0.5rem;
+      color: #f9fafb;
+      font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+      margin: 1.5rem 0;
+      overflow-x: auto;
+      padding: 1rem;
+
+      code {
+        background-color: transparent;
+        color: inherit;
+        font-size: 0.875rem;
+        padding: 0;
+      }
+    }
+
+    /* Horizontal Rule */
+    hr {
+      border: 0;
+      border-top: 2px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+
+    /* Links */
+    a {
+      color: #2563eb;
+      text-decoration: underline;
+
+      &:hover {
+        color: #1d4ed8;
+      }
+    }
+
+    /* Images */
+    img {
+      border-radius: 0.5rem;
+      display: block;
+      height: auto;
+      margin: 1.5rem auto;
+      max-width: 100%;
+    }
+
+    /* YouTube embeds */
+    iframe {
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+      max-width: 100%;
+    }
+
+    /* Text alignment */
+    .text-left {
+      text-align: left;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .text-justify {
+      text-align: justify;
+    }
+
+    /* Highlight */
+    mark {
+      background-color: #fef08a;
+      border-radius: 0.125rem;
+      padding: 0.125rem 0;
+    }
+
+    /* Selection */
+    &::selection {
+      background-color: #bfdbfe;
+    }
+  }
+}

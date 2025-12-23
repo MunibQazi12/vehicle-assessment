@@ -1,0 +1,6 @@
+{
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"trailingSlash": true,
+	"ignoreCommand": "node scripts/check-build-required.js",
+	"buildCommand": "npm install --legacy-peer-deps && npm run build"
+}

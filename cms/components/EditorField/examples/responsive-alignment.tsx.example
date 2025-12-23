@@ -1,0 +1,158 @@
+/**
+ * Example: Using Responsive Alignment in WYSIWYGBlock
+ * 
+ * This example shows how to configure the WYSIWYGBlock to use responsive alignment
+ */
+
+import { CoreEditor } from '@dtcms/components/EditorField'
+
+// Example 1: Standard preset with responsive alignment (default)
+export const Example1 = () => {
+	const [content, setContent] = React.useState({})
+	return (
+		<CoreEditor
+			preset="standard"
+			value={content}
+			onChange={(json) => setContent(json)}
+		// Standard preset includes responsiveAlignment by default
+		/>
+	)
+}
+
+// Example 2: Custom configuration with responsive alignment
+export const Example2 = () => {
+	return (
+		<CoreEditor
+			preset="custom"
+			features={[
+				'bold',
+				'italic',
+				'underline',
+				'responsiveAlignment',  // Enable responsive alignment
+				'fontSize',
+				'textColor'
+			]}
+		/>
+	)
+}
+
+// Example 3: Using alignment feature group (includes responsive)
+export const Example3 = () => {
+	return (
+		<CoreEditor
+			preset="custom"
+			features={[
+				'textFormatting',  // bold, italic, underline, strikethrough
+				'alignment',       // Includes responsiveAlignment + individual buttons
+				'colors'
+			]}
+		/>
+	)
+}
+
+// Example 4: Mix responsive with individual alignment buttons
+export const Example4 = () => {
+	return (
+		<CoreEditor
+			preset="custom"
+			features={[
+				'bold',
+				'italic',
+				'responsiveAlignment',  // Full responsive control
+				'alignCenter',          // Quick center button for common use
+			]}
+		/>
+	)
+}
+
+// Example 5: Accessing responsive alignment data programmatically
+export const Example5_ReadAlignment = () => {
+	const getAlignment = (editor: any) => {
+		const attrs = editor.getAttributes('paragraph')
+		const align = attrs.textAlign
+
+		if (typeof align === 'object') {
+			console.log('Mobile:', align.mobile)
+			console.log('Tablet:', align.tablet)
+			console.log('Desktop:', align.desktop)
+		}
+	}
+
+	return null
+}
+
+// Example 6: Setting responsive alignment programmatically
+export const Example6_SetAlignment = () => {
+	const setAlignment = (editor: any) => {
+		// Set different alignments for each breakpoint
+		if (editor.commands.setResponsiveTextAlign) {
+			editor.commands.setResponsiveTextAlign({
+				mobile: 'center',
+				tablet: 'left',
+				desktop: 'right'
+			})
+		}
+	}
+
+	return null
+}
+
+// Example 7: Common use case - Hero text
+export const Example7_HeroText = () => {
+	return (
+		<CoreEditor
+			preset="custom"
+			features={[
+				'bold',
+				'fontSize',
+				'textColor',
+				'responsiveAlignment'
+			]}
+			placeholder="Enter your hero text..."
+		// Default behavior: editor will render with mobile-center, desktop-left
+		/>
+	)
+}
+
+// Example 8: PayloadCMS Block Configuration
+export const WYSIWYGBlockConfig = {
+	slug: 'wysiwygBlock',
+	fields: [
+		{
+			name: 'content',
+			type: 'json',
+			admin: {
+				components: {
+					// Use EditorField with responsive alignment
+					Field: '@dtcms/components/EditorField',
+				}
+			}
+		},
+		{
+			name: 'htmlContent',
+			type: 'textarea',
+			admin: {
+				hidden: true, // Auto-generated from content
+			}
+		}
+	]
+}
+
+// Example output HTML from responsive alignment:
+
+/*
+Input (in editor):
+- Mobile: center
+- Tablet: left  
+- Desktop: right
+
+Output HTML:
+<p class="text-center md:text-left lg:text-right">
+  Your content here
+</p>
+
+Tailwind will apply:
+- text-center on screens < 768px
+- md:text-left on screens >= 768px
+- lg:text-right on screens >= 1024px
+*/

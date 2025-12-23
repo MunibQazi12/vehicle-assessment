@@ -1,0 +1,16 @@
+// Hide the plugin's default tenant selector - we use our custom one instead
+.tenant-selector:not(.custom-tenant-selector) {
+  display: none !important;
+}
+
+// Ensure our custom selector is visible and styled
+.custom-tenant-selector {
+  display: block !important;
+}
+
+// Limit HTML Block textarea height with internal scrollbar
+.html-block-textarea textarea {
+  max-height: 500px !important;
+  overflow-y: auto !important;
+  resize: vertical !important;
+}

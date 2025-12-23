@@ -1,0 +1,345 @@
+/* WYSIWYG Editor Styles for Payload CMS Admin */
+
+.wysiwyg-editor-field {
+  .ProseMirror {
+    min-height: 200px;
+    padding: 1rem;
+    
+    &:focus {
+      outline: none;
+    }
+
+    /* Placeholder styling */
+    p.is-editor-empty:first-child::before {
+      color: #9ca3af;
+      content: attr(data-placeholder);
+      float: left;
+      height: 0;
+      pointer-events: none;
+    }
+
+    /* Headings */
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+    }
+
+    h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+      margin-top: 1.75rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+      margin-top: 1.25rem;
+    }
+
+    h5 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    h6 {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    /* Paragraphs */
+    p {
+      margin-bottom: 1rem;
+      line-height: 1.75;
+    }
+
+    /* Lists */
+    ul {
+      list-style-type: disc;
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+
+      li {
+        margin-bottom: 0.25rem;
+      }
+    }
+
+    ol {
+      list-style-type: decimal;
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+
+      li {
+        margin-bottom: 0.25rem;
+      }
+    }
+
+    /* Blockquote */
+    blockquote {
+      border-left: 4px solid #e5e7eb;
+      margin: 1.5rem 0;
+      padding-left: 1rem;
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    /* Code */
+    code {
+      background-color: #f3f4f6;
+      border-radius: 0.25rem;
+      font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 0.875rem;
+      padding: 0.125rem 0.25rem;
+    }
+
+    pre {
+      background-color: #1f2937;
+      border-radius: 0.5rem;
+      color: #f9fafb;
+      font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+      margin: 1.5rem 0;
+      overflow-x: auto;
+      padding: 1rem;
+
+      code {
+        background-color: transparent;
+        color: inherit;
+        font-size: 0.875rem;
+        padding: 0;
+      }
+    }
+
+    /* Horizontal Rule */
+    hr {
+      border: 0;
+      border-top: 2px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+
+    /* Links */
+    a {
+      color: #2563eb;
+      text-decoration: underline;
+
+      &:hover {
+        color: #1d4ed8;
+      }
+    }
+
+    /* Images */
+    img {
+      border-radius: 0.5rem;
+      display: block;
+      height: auto;
+      margin: 1.5rem auto;
+      max-width: 100%;
+    }
+
+    /* YouTube embeds */
+    iframe {
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+      max-width: 100%;
+    }
+
+    /* Text alignment */
+    .text-left {
+      text-align: left;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .text-justify {
+      text-align: justify;
+    }
+
+    /* Desktop-first alignment for admin editor preview */
+    /* lg: prefixed classes should take priority (simulating desktop view) */
+    &.lg\:text-left,
+    .lg\:text-left {
+      text-align: left !important;
+    }
+
+    &.lg\:text-center,
+    .lg\:text-center {
+      text-align: center !important;
+    }
+
+    &.lg\:text-right,
+    .lg\:text-right {
+      text-align: right !important;
+    }
+
+    &.lg\:text-justify,
+    .lg\:text-justify {
+      text-align: justify !important;
+    }
+
+    /* md: prefixed classes (tablet) - lower priority than lg: */
+    &.md\:text-left:not(.lg\:text-left):not(.lg\:text-center):not(.lg\:text-right):not(.lg\:text-justify),
+    .md\:text-left:not(.lg\:text-left):not(.lg\:text-center):not(.lg\:text-right):not(.lg\:text-justify) {
+      text-align: left !important;
+    }
+
+    &.md\:text-center:not(.lg\:text-left):not(.lg\:text-center):not(.lg\:text-right):not(.lg\:text-justify),
+    .md\:text-center:not(.lg\:text-left):not(.lg\:text-center):not(.lg\:text-right):not(.lg\:text-justify) {
+      text-align: center !important;
+    }
+
+    &.md\:text-right:not(.lg\:text-left):not(.lg\:text-center):not(.lg\:text-right):not(.lg\:text-justify),
+    .md\:text-right:not(.lg\:text-left):not(.lg\:text-center):not(.lg\:text-right):not(.lg\:text-justify) {
+      text-align: right !important;
+    }
+
+    &.md\:text-justify:not(.lg\:text-left):not(.lg\:text-center):not(.lg\:text-right):not(.lg\:text-justify),
+    .md\:text-justify:not(.lg\:text-left):not(.lg\:text-center):not(.lg\:text-right):not(.lg\:text-justify) {
+      text-align: justify !important;
+    }
+
+    /* Spacing/Margin classes - Tailwind values */
+    .mt-0 { margin-top: 0; }
+    .mt-1 { margin-top: 0.25rem; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mt-3 { margin-top: 0.75rem; }
+    .mt-4 { margin-top: 1rem; }
+    .mt-5 { margin-top: 1.25rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .mt-8 { margin-top: 2rem; }
+    .mt-10 { margin-top: 2.5rem; }
+    .mt-12 { margin-top: 3rem; }
+    .mt-16 { margin-top: 4rem; }
+    .mt-20 { margin-top: 5rem; }
+    .mt-24 { margin-top: 6rem; }
+
+    .mb-0 { margin-bottom: 0; }
+    .mb-1 { margin-bottom: 0.25rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-3 { margin-bottom: 0.75rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-5 { margin-bottom: 1.25rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-8 { margin-bottom: 2rem; }
+    .mb-10 { margin-bottom: 2.5rem; }
+    .mb-12 { margin-bottom: 3rem; }
+    .mb-16 { margin-bottom: 4rem; }
+    .mb-20 { margin-bottom: 5rem; }
+    .mb-24 { margin-bottom: 6rem; }
+
+    .ml-0 { margin-left: 0; }
+    .ml-1 { margin-left: 0.25rem; }
+    .ml-2 { margin-left: 0.5rem; }
+    .ml-3 { margin-left: 0.75rem; }
+    .ml-4 { margin-left: 1rem; }
+    .ml-5 { margin-left: 1.25rem; }
+    .ml-6 { margin-left: 1.5rem; }
+    .ml-8 { margin-left: 2rem; }
+    .ml-10 { margin-left: 2.5rem; }
+    .ml-12 { margin-left: 3rem; }
+    .ml-16 { margin-left: 4rem; }
+    .ml-20 { margin-left: 5rem; }
+    .ml-24 { margin-left: 6rem; }
+
+    .mr-0 { margin-right: 0; }
+    .mr-1 { margin-right: 0.25rem; }
+    .mr-2 { margin-right: 0.5rem; }
+    .mr-3 { margin-right: 0.75rem; }
+    .mr-4 { margin-right: 1rem; }
+    .mr-5 { margin-right: 1.25rem; }
+    .mr-6 { margin-right: 1.5rem; }
+    .mr-8 { margin-right: 2rem; }
+    .mr-10 { margin-right: 2.5rem; }
+    .mr-12 { margin-right: 3rem; }
+    .mr-16 { margin-right: 4rem; }
+    .mr-20 { margin-right: 5rem; }
+    .mr-24 { margin-right: 6rem; }
+
+    /* Font sizes - Tailwind classes */
+    .text-xs {
+      font-size: 0.75rem;
+      line-height: 1rem;
+    }
+
+    .text-sm {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+
+    .text-base {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+
+    .text-lg {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+
+    .text-xl {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+    }
+
+    .text-2xl {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+
+    .text-3xl {
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
+
+    .text-4xl {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
+
+    .text-5xl {
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .text-6xl {
+      font-size: 3.75rem;
+      line-height: 1;
+    }
+
+    /* Highlight */
+    mark {
+      background-color: #fef08a;
+      border-radius: 0.125rem;
+      padding: 0.125rem 0;
+    }
+
+    /* Selection */
+    &::selection {
+      background-color: #bfdbfe;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+import type {
+	CollectionConfig,
+} from 'payload'
+
+import { authenticated } from '../../access/roles'
+
+// =============================================================================
+// Users Collection Configuration
+// =============================================================================
+
+export const Users: CollectionConfig = {
+	slug: 'users',
+	access: {
+		create: authenticated,
+		delete: authenticated,
+		read: authenticated,
+		update: authenticated,
+	},
+	admin: {
+		defaultColumns: ['name', 'email'],
+		useAsTitle: 'name',
+		group: 'Admin',
+	},
+	auth: {
+		verify: false,
+		loginWithUsername: false,
+	},
+	fields: [
+		{
+			name: 'name',
+			type: 'text',
+			required: true,
+		},
+	],
+	timestamps: true,
+}

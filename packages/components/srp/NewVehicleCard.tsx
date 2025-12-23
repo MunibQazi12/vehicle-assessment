@@ -174,7 +174,6 @@ export default function NewVehicleCard({ vehicle, priority = false }: NewVehicle
 				)}
 			</Link>
 
-			{/* Title - Wrapped in Link */}
 			<Link href={vdpUrl}>
 				<h3 className="text-[19px] p-[15px_7px_0_12px] font-bold text-[#020202] font-inter">
 					{title}
@@ -182,8 +181,6 @@ export default function NewVehicleCard({ vehicle, priority = false }: NewVehicle
 			</Link>
 			<div className="flex flex-col gap-6 p-[5px_7px_20px_12px] mt-auto">
 				<div className="flex flex-col gap-6">
-
-					{/* Stock number, type, and feature chips as a horizontally scrollable row with arrows */}
 					<div className="relative flex items-center">
 						<button
 							type="button"

@@ -1,8 +1,6 @@
 import { useRef, useState } from "react";
 import { Calendar, Calculator, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import type { SRPVehicle } from "@dealertower/types/api";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 import { getBlurDataURL, getSecureVehicleImageUrl } from "@dealertower/lib/utils/image";
 import Image from "next/image";
 import Link from "next/link";
@@ -35,8 +33,7 @@ function formatCurrency(value?: number | null): string {
 
 export default function NewVehicleCard({ vehicle, priority = false }: NewVehicleCardProps) {
 	const websiteInfo = useWebsiteInfo();
-	const prevRef = useRef<HTMLButtonElement | null>(null);
-	const nextRef = useRef<HTMLButtonElement | null>(null);
+	const chipsScrollRef = useRef<HTMLDivElement | null>(null);
 	const image = getSecureVehicleImageUrl(vehicle.photo);
 	const blurDataURL = getBlurDataURL(vehicle.photo_preview);
 	const title =
@@ -186,70 +183,54 @@ export default function NewVehicleCard({ vehicle, priority = false }: NewVehicle
 			<div className="flex flex-col gap-6 p-[5px_7px_20px_12px] mt-auto">
 				<div className="flex flex-col gap-6">
 
-					{/* Stock number, type, and feature chips as a Swiper carousel */}
-					<div className="relative flex items-center gap-2 vehicle-card-swiper-wrapper">
-						{/* Custom navigation buttons */}
+					{/* Stock number, type, and feature chips as a horizontally scrollable row with arrows */}
+					<div className="relative flex items-center">
 						<button
 							type="button"
-							ref={prevRef}
-							className="cursor-pointer absolute left-0 z-10 flex items-center justify-center text-zinc-600 hover:bg-zinc-50"
-							aria-label="Previous"
-						>
-							<ChevronLeft className="h-5 w-5" />
-						</button>
-						<button
-							type="button"
-							ref={nextRef}
-							className="cursor-pointer absolute right-0 z-10 flex items-center justify-center text-zinc-600 hover:bg-zinc-50"
-							aria-label="Next"
-						>
-							<ChevronRight className="h-5 w-5" />
-						</button>
-
-						<Swiper
-							slidesPerView="auto"
-							spaceBetween={8}
-							modules={[Navigation]}
-							onBeforeInit={(swiper) => {
-								// wire custom buttons to Swiper navigation
-								// eslint-disable-next-line @typescript-eslint/no-explicit-any
-								const nav = swiper.params.navigation as any;
-								if (prevRef.current && nextRef.current) {
-									nav.prevEl = prevRef.current;
-									nav.nextEl = nextRef.current;
-								}
+							className="hidden sm:flex items-center justify-center text-zinc-600 hover:bg-zinc-50 rounded-full p-1 mr-1 disabled:opacity-30"
+							aria-label="Scroll chips left"
+							onClick={() => {
+								chipsScrollRef.current?.scrollBy({ left: -150, behavior: "smooth" });
 							}}
-							navigation={{
-								prevEl: prevRef.current,
-								nextEl: nextRef.current,
-							}}
-							className="flex-1 mx-8 vehicle-card-swiper"
 						>
-							<SwiperSlide className="!w-auto">
-								<div className="flex items-center h-6 px-3 rounded-2xl bg-white shadow">
-									<span className="text-[15px] text-[#231F20] font-lato">
-										{stockNumber}
-									</span>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide className="!w-auto">
-								<div className="flex items-center h-6 px-3 rounded-2xl bg-white shadow">
-									<span className="text-[15px] text-[#231F20] font-lato">
-										{type}
-									</span>
-								</div>
-							</SwiperSlide>
+							<ChevronLeft className="h-4 w-4" />
+						</button>
+						<div
+							ref={chipsScrollRef}
+							className="flex items-center gap-2 overflow-x-auto scrollbar-hide pr-2 py-1"
+						>
+							<div className="flex items-center h-6 px-3 rounded-2xl bg-white shadow whitespace-nowrap">
+								<span className="text-[15px] text-[#231F20] font-lato">
+									{stockNumber}
+								</span>
+							</div>
+							<div className="flex items-center h-6 px-3 rounded-2xl bg-white shadow whitespace-nowrap">
+								<span className="text-[15px] text-[#231F20] font-lato">
+									{type}
+								</span>
+							</div>
 							{features.map((feature, idx) => (
-								<SwiperSlide key={`feature-${idx}`} className="!w-auto">
-									<div className="flex items-center gap-1.5 h-6 px-3 rounded-2xl bg-white shadow">
-										{feature.icon}
-										<span className="text-[15px] text-[#231F20] font-lato">
-											{feature.label}
-										</span>
-									</div>
-								</SwiperSlide>
+								<div
+									key={`feature-${idx}`}
+									className="flex items-center gap-1.5 h-6 px-3 rounded-2xl bg-white shadow whitespace-nowrap"
+								>
+									{feature.icon}
+									<span className="text-[15px] text-[#231F20] font-lato">
+										{feature.label}
+									</span>
+								</div>
 							))}
-						</Swiper>
+						</div>
+						<button
+							type="button"
+							className="hidden sm:flex items-center justify-center text-zinc-600 hover:bg-zinc-50 rounded-full p-1 ml-1 disabled:opacity-30"
+							aria-label="Scroll chips right"
+							onClick={() => {
+								chipsScrollRef.current?.scrollBy({ left: 150, behavior: "smooth" });
+							}}
+						>
+							<ChevronRight className="h-4 w-4" />
+						</button>
 					</div>
 
 					<div className="flex flex-wrap-reverse items-center justify-between gap-5 2xl:pt-4 pt-2">

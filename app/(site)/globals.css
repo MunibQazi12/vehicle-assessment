@@ -109,20 +109,6 @@ img {
 	border-width: 0;
 }
 
-/* Swiper navigation styling for NewVehicleCard chips carousel */
-.vehicle-card-swiper-wrapper {
-	--swiper-navigation-size: 18px;
-
-}
-
-.vehicle-card-swiper-wrapper .swiper-button-disabled {
-	opacity: 0.5;
-}
-
-.vehicle-card-swiper {
-	max-width: 350px !important;
-}
-
 /* CTA Button hover effects using CSS custom properties */
 .cta-form-btn:hover,
 .cta-link-btn:hover {

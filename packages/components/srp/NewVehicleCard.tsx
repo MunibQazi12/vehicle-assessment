@@ -289,7 +289,6 @@ export default function NewVehicleCard({ vehicle, priority = false }: NewVehicle
 									title={vehicle.ext_color_raw || undefined}
 								/>
 							)}
-							{/* Interior color swatch */}
 							{vehicle.int_color && (
 								<span
 									className="inline-block h-1.5 w-8"

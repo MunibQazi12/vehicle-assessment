@@ -45,3 +45,4 @@ next-env.d.ts
 Makefile
 /scripts/output
 .playwright-mcp/
+config.bat

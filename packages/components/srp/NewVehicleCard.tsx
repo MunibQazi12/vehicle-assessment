@@ -199,6 +199,7 @@ export default function NewVehicleCard({ vehicle, priority = false }: NewVehicle
 							ref={chipsScrollRef}
 							className="flex items-center gap-2 overflow-x-auto scrollbar-hide pr-2 py-1"
 						>
+						
 							<div className="flex items-center h-6 px-3 rounded-2xl bg-white shadow whitespace-nowrap">
 								<span className="text-[15px] text-[#231F20] font-lato">
 									{stockNumber}
